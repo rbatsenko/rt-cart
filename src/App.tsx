@@ -5,7 +5,7 @@ import './App.css';
 type Item = {
   name: string;
   cost: number;
-}
+};
 
 export const App = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -13,7 +13,7 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('https://d158uqe6ce.execute-api.eu-central-1.amazonaws.com/items');
-      const data = await response.json() as Item[];
+      const data = (await response.json()) as Item[];
 
       setItems(data);
     };
@@ -26,7 +26,11 @@ export const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <ul>
-          {items.map(item => <li>Name: {item.name}, Cost: {item.cost}</li>)}
+          {items.map(item => (
+            <li key={item.name}>
+              Name: {item.name}, Cost: {item.cost}
+            </li>
+          ))}
         </ul>
       </header>
     </div>
