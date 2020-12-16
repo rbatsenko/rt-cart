@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { api } from './api/api';
 
 type Item = {
   name: string;
@@ -12,7 +13,7 @@ export const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://d158uqe6ce.execute-api.eu-central-1.amazonaws.com/items');
+      const response = await fetch(api.items);
       const data = (await response.json()) as Item[];
 
       setItems(data);

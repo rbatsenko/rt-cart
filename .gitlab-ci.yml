@@ -1,0 +1,16 @@
+image: node:14.15.1
+
+stages:
+  - test
+
+Lint and Tests:
+  stage: test
+  cache:
+    key: "dependencies"
+    paths:
+      - node_modules/
+  script:
+    - yarn install
+    - yarn test
+  only:
+    - merge_requests
