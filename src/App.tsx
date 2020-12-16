@@ -1,26 +1,34 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+type Item = {
+  name: string;
+  cost: number;
+}
+
+export const App = () => {
+  const [items, setItems] = useState<Item[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://d158uqe6ce.execute-api.eu-central-1.amazonaws.com/items');
+      const data = await response.json() as Item[];
+
+      setItems(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ul>
+          {items.map(item => <li>Name: {item.name}, Cost: {item.cost}</li>)}
+        </ul>
       </header>
     </div>
   );
-}
-
-export default App;
+};
