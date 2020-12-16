@@ -11,6 +11,9 @@ Lint and Tests:
       - node_modules/
   script:
     - yarn install
+    - yarn lint
+    - echo "LINT SUCCESS"
     - yarn test
+    - echo "TEST SUCCESS"
   only:
     - merge_requests
