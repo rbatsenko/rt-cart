@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { api } from '../api/api';
+import logo from '../assets/img/logo.svg';
 import './App.css';
-import { api } from './api/api';
 
 type Item = {
   name: string;
