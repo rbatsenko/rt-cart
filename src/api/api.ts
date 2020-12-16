@@ -1,3 +1,3 @@
 export const api = {
-  items: 'https://d158uqe6ce.execute-api.eu-central-1.amazonaws.com/items',
+  items: `${process.env.REACT_APP_API_URL}/items`,
 };
