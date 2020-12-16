@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
+describe('App component', () => {
+  test('loads and displays items', async () => {
+    render(<App />);
 
-  const linkElement = screen.getByText(/learn react/i);
+    const items = await screen.findAllByRole('listitem');
 
-  expect(linkElement).toBeInTheDocument();
+    expect(items).toHaveLength(3);
+  });
 });
