@@ -1,0 +1,8 @@
+.item {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.itemQuantityInput {
+  margin-left: 0.5rem;
+}
