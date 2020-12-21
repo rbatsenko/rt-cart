@@ -1,24 +1,28 @@
+import { Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 import { Item } from '../../../../shared/Cart/Cart.types';
 import { SummaryItemRow } from '../Item/SummaryItemRow';
-import styles from './SummaryItemsTable.module.css';
 
 type SummaryItemsTableProps = {
   items: Item[];
 };
 
 export const SummaryItemsTable = ({ items }: SummaryItemsTableProps) => (
-  <table className={styles.table}>
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th width="50%">Item</Th>
+        <Th width="25%" isNumeric>
+          Quantity
+        </Th>
+        <Th width="25%" isNumeric>
+          Total
+        </Th>
+      </Tr>
+    </Thead>
+    <Tbody>
       {items.map(item => (
         <SummaryItemRow key={item.id} item={item} />
       ))}
-    </tbody>
-  </table>
+    </Tbody>
+  </Table>
 );

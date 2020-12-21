@@ -1,3 +1,4 @@
+import { Box, Heading } from '@chakra-ui/react';
 import { useCartSummaryItems, useCartTotal } from '../../../shared/Cart/Cart.slice';
 import { SummaryItemsTable } from './ItemsTable/SummaryItemsTable';
 
@@ -6,10 +7,16 @@ export const Summary = () => {
   const total = useCartTotal();
 
   return (
-    <div>
-      <h1>Cart summary</h1>
-      <SummaryItemsTable items={items} />
-      <h3>Total cost: {total}</h3>
-    </div>
+    <Box>
+      <Heading as="h1" mb={4}>
+        Cart summary
+      </Heading>
+      <Box mb={4}>
+        <SummaryItemsTable items={items} />
+      </Box>
+      <Heading as="h3" size="md">
+        Total cost: {total} PLN
+      </Heading>
+    </Box>
   );
 };

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
 import { itemsMock } from '../../../mocks/data/items';
-import { store } from '../../../store/store';
 import { Cart } from './Cart';
 
 describe('Cart component', () => {
@@ -16,22 +14,14 @@ describe('Cart component', () => {
   };
 
   test('displays title', () => {
-    render(
-      <Provider store={store}>
-        <Cart {...cartProps} />
-      </Provider>,
-    );
+    render(<Cart {...cartProps} />);
 
     expect(screen.getByRole('heading')).toBeInTheDocument();
     expect(screen.getByText(/cart/i)).toBeInTheDocument();
   });
 
   test('displays items', () => {
-    render(
-      <Provider store={store}>
-        <Cart {...cartProps} />
-      </Provider>,
-    );
+    render(<Cart {...cartProps} />);
 
     expect(screen.getAllByRole('listitem')).toHaveLength(3);
   });

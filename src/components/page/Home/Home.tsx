@@ -1,10 +1,12 @@
+import { Divider } from '@chakra-ui/react';
 import { CartContainer } from '../../shared/Cart/Cart.container';
+import { Page } from '../../shared/Page/Page';
 import { Summary } from './Summary/Summary';
-import styles from './Home.module.css';
 
 export const Home = () => (
-  <div className={styles.page}>
+  <Page>
     <CartContainer />
+    <Divider mt={12} mb={8} />
     <Summary />
-  </div>
+  </Page>
 );
