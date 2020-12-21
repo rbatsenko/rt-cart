@@ -1,8 +1,12 @@
+import { Container } from '@chakra-ui/react';
 import { Home } from './page/Home/Home';
-import styles from './App.module.css';
+import { Navbar } from './shared/Navbar/Navbar';
 
 export const App = () => (
-  <div className={styles.app}>
-    <Home />
-  </div>
+  <>
+    <Navbar />
+    <Container centerContent>
+      <Home />
+    </Container>
+  </>
 );

@@ -1,6 +1,14 @@
-import { ChangeEvent, memo } from 'react';
+import { memo } from 'react';
+import {
+  Box,
+  ListItem,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '@chakra-ui/react';
 import { Item } from '../Cart.types';
-import styles from './CartItem.module.css';
 
 type CartItemProps = {
   item: Item;
@@ -9,23 +17,23 @@ type CartItemProps = {
 
 export const CartItem = memo(
   function CartItem({ item, onChange }: CartItemProps) {
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      onChange(Number(e.currentTarget.value));
+    const handleChange = (_valueAsString: string, valueAsNumber: number) => {
+      onChange(valueAsNumber);
     };
 
     return (
-      <li key={item.name} className={styles.item}>
-        <div>
+      <ListItem display="flex" alignItems="center" justifyContent="space-between" mb={2}>
+        <Box>
           {item.name}, Cost: <strong>{item.cost} PLN</strong>, quantity:
-        </div>
-        <input
-          className={styles.itemQuantityInput}
-          type="number"
-          min={0}
-          value={item.quantityInCart}
-          onChange={handleChange}
-        />
-      </li>
+        </Box>
+        <NumberInput min={0} ml={2} value={item.quantityInCart} onChange={handleChange}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput>
+      </ListItem>
     );
   },
   (prevProps, nextProps) => prevProps.item.quantityInCart === nextProps.item.quantityInCart,
