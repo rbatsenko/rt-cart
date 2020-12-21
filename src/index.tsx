@@ -6,6 +6,7 @@ import { store } from './store/store';
 import './index.css';
 import { App } from './components/App';
 import reportWebVitals from './reportWebVitals';
+import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
 
 // Intercept requests with MSW service worker when developing locally
 if (process.env.NODE_ENV === 'development') {
@@ -17,11 +18,13 @@ if (process.env.NODE_ENV === 'development') {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
 );

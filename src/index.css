@@ -9,6 +9,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-table, th, td {
-  border: 1px solid black;
+.error-boundary-alert-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.error-boundary-alert {
+  background-color: rgb(254, 215, 215);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 600px;
+  height: 200px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.error-boundary-alert h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.error-boundary-alert p {
+  margin: 0;
 }
